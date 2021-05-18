@@ -1,1 +1,462 @@
-[]
+[
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  },
+  {
+    "binary_size": {
+      "hello_world": 1829376,
+      "tao_rlib": 5112504,
+      "wry_rlib": 1000656
+    },
+    "cargo_deps": 214,
+    "created_at": "2021-05-18T10:45:10Z",
+    "exec_time": {
+      "hello_world": {
+        "max": 0.293285019575,
+        "mean": 0.2733435554840909,
+        "min": 0.26032775757500004,
+        "stddev": 0.010970761335726251,
+        "system": 0.05586239,
+        "user": 0.130130025
+      }
+    },
+    "max_memory": {},
+    "sha1": "b5a601916527be2658e6916668fb04a1ee6bd513",
+    "syscall_count": {},
+    "thread_count": {}
+  }
+]
