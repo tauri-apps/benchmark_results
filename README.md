@@ -42,7 +42,7 @@ How many total syscalls are performed when executing a given application. Smalle
 
 ### CPU Intensive
 
-The CPU intensive benchmark measures how much time it takes to calculate all the prime numbers under XXXX wihtout blocking the UI and reporting how many have been found so far.
+The CPU intensive benchmark measures how much time it takes to calculate all the prime numbers under XXXX wihtout blocking the UI and reporting how many have been found so far using web workers.
 
 ### Hello World
 
