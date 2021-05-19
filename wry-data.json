@@ -13,7 +13,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -66,7 +66,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -119,7 +119,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -172,7 +172,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -225,7 +225,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -278,7 +278,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -331,7 +331,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -384,7 +384,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -437,7 +437,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -490,7 +490,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -543,7 +543,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -596,7 +596,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -649,7 +649,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -702,7 +702,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -755,7 +755,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -808,7 +808,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -861,7 +861,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -914,7 +914,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -967,7 +967,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -1020,7 +1020,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
@@ -1073,7 +1073,7 @@
       "wry_cpu_intensive": {
         "max": 0.0,
         "mean": 0.0,
-        "min": 7.0,
+        "min": 0.0,
         "stddev": 0.0,
         "system": 0.0,
         "user": 0.0
