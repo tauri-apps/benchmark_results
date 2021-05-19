@@ -37,3 +37,17 @@ How many threads the application use. Smaller is better.
 ### Syscall count
 
 How many total syscalls are performed when executing a given application. Smaller is better.
+
+---
+
+### CPU Intensive
+
+The CPU intensive benchmark measures how much time it takes to calculate all the prime numbers under XXXX wihtout blocking the UI and reporting how many have been found so far.
+
+### Hello World
+
+This benchmark measures how long it takes to get an application fully started.
+
+### Custom Protocol
+
+Test WRY with a custom protocol. (local files)
