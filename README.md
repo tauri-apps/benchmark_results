@@ -86,3 +86,9 @@ This benchmark measures how long it takes to get an application fully started.
 ### Custom Protocol
 
 Test WRY with a custom protocol. (local files)
+
+---
+
+### Acknowledgement
+
+We would like to thank the authors and contributors to [deno](https://github.com/denoland/deno) for their groundbreaking work upon which the benchmarking system is not only based, but also leans heavily upon. Thankyou!!!
