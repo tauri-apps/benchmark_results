@@ -18,6 +18,41 @@ All benchmarks run on Github Actions on `ubuntu-latest` matrix. We measure vario
 
 ---
 
+### Data structure
+
+```
+interface ExecTimeData {
+  mean: number;
+  stddev: number;
+  user: number;
+  system: number;
+  min: number;
+  max: number;
+}
+
+interface BenchmarkData {
+  created_at: string;
+  sha1: string;
+  exec_time: {
+    [key: string]: ExecTimeData;
+  };
+  binary_size: {
+    [key: string]: number;
+  };
+  thread_count: {
+    [key: string]: number;
+  };
+  syscall_count: {
+    [key: string]: number;
+  };
+  cargo_deps: {
+    [key: string]: number;
+  };
+}
+```
+
+---
+
 ### Execution time
 
 This shows how much time total it takes intialize the application and wait the `DOMContentLoaded` event. We use [hyperfine](https://github.com/sharkdp/hyperfine) under the hood and run 3 warm-up sequence then, we run 10 sequences to calculate the average execution time.
