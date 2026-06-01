@@ -203,9 +203,9 @@
 					urls.map(async ([url, type]) => {
 						const data = await fetch(url).then((r) => r.json())
 
-						data.forEach((item) => {
+						for (const item of data) {
 							item.typeLabel = type
-						})
+						}
 
 						return data
 					}),
@@ -217,15 +217,15 @@
 			function transformData(data) {
 				const rows = []
 
-				data.forEach((item) => {
-					Object.entries(item.exec_time || {}).forEach(([key, value]) => {
+				for (const item of data) {
+					for (const [key, value] of Object.entries(item.exec_time || {})) {
 						rows.push({
 							type: 'exec_time',
 							series: key,
 							order: new Date(item.created_at),
 							value: Number(value.mean.toFixed(3)),
 						})
-					})
+					}
 
 					addSeries(item, 'binary_size')
 					addSeries(item, 'max_memory')
@@ -233,21 +233,21 @@
 					addSeries(item, 'syscall_count')
 
 					if (item.cargo_deps) {
-						Object.entries(item.cargo_deps).forEach(([key, value]) => {
+						for (const [key, value] of Object.entries(item.cargo_deps)) {
 							rows.push({
 								type: 'cargo_deps',
 								series: `${item.typeLabel} ${key}`,
 								order: new Date(item.created_at),
 								value,
 							})
-						})
+						}
 					}
-				})
+				}
 
 				function addSeries(item, category) {
 					if (!item[category]) return
 
-					Object.entries(item[category]).forEach(([key, value]) => {
+					for (let [key, value] of Object.entries(item[category])) {
 						if (category === 'binary_size' || category === 'max_memory') {
 							value = Number((value / 1024 / 1024).toFixed(2))
 						}
@@ -258,7 +258,7 @@
 							order: new Date(item.created_at),
 							value,
 						})
-					})
+					}
 				}
 
 				return rows
