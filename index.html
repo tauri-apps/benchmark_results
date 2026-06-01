@@ -116,26 +116,45 @@
 
 			<div class="chart">
 				<h2>Execution Time</h2>
+				<p>
+					This shows how much time total it takes intialize the application and wait the
+					<code>DOMContentLoaded</code>
+					event. We use
+					<a href="https://github.com/sharkdp/hyperfine">hyperfine</a>
+					under the hood and run 3 warm-up sequence then, we run 10 sequences to calculate the
+					average execution time.
+				</p>
 				<div id="exec_time" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
 				<h2>Binary Size</h2>
+				<p>All binaries are compiled in release mode.</p>
 				<div id="binary_size" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
 				<h2>Memory Usage</h2>
+				<p>
+					We use
+					<code>time -v</code>
+					to get the max memory usage during execution. Smaller is better.
+				</p>
 				<div id="max_memory" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
 				<h2>Thread Count</h2>
+				<p>How many threads the application use. Smaller is better.</p>
 				<div id="thread_count" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
 				<h2>Syscall Count</h2>
+				<p>
+					How many total syscalls are performed when executing a given application. Smaller is
+					better.
+				</p>
 				<div id="syscall_count" class="chart-container"></div>
 			</div>
 
