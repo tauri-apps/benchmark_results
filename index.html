@@ -5,6 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Tauri Benchmarks</title>
 
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown.min.css"
+		/>
 		<style>
 			body {
 				font-family: system-ui, sans-serif;
@@ -12,137 +16,126 @@
 				margin: 0 auto;
 				padding: 2rem;
 			}
-
-			.chart {
-				margin-bottom: 3rem;
-			}
-
-			.chart-container {
-				height: 320px;
-			}
-
-			table {
-				border-collapse: collapse;
-				width: 100%;
-			}
-
-			th,
-			td {
-				border: 1px solid #ddd;
-				padding: 8px;
-			}
 		</style>
 	</head>
 
 	<body>
-		<h1>Benchmarks</h1>
+		<div class="markdown-body">
+			<h1>Benchmarks</h1>
 
-		<p>
-			All benchmarks run on GitHub Actions using the
-			<code>ubuntu-latest</code>
-			matrix.
-		</p>
+			<p>
+				All benchmarks run on GitHub Actions using the
+				<code>ubuntu-latest</code>
+				matrix.
+			</p>
 
-		<table>
-			<thead>
-				<tr>
-					<th>Tauri</th>
-					<th>Wry</th>
-					<th>Electron</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<a
-							href="https://github.com/tauri-apps/tauri/tree/dev/tooling/bench/tests/cpu_intensive"
-						>
-							cpu_intensive
-						</a>
-					</td>
-					<td>
-						<a href="https://github.com/tauri-apps/wry/tree/dev/bench/tests/src/cpu_intensive.rs">
-							cpu_intensive
-						</a>
-					</td>
-					<td>
-						<a href="https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/cpu_intensive">
-							cpu_intensive
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="https://github.com/tauri-apps/tauri/tree/dev/tooling/bench/tests/helloworld">
-							hello_world
-						</a>
-					</td>
-					<td>
-						<a href="https://github.com/tauri-apps/wry/tree/dev/bench/tests/src/hello_world.rs">
-							hello_world
-						</a>
-					</td>
-					<td>
-						<a href="https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/hello_world">
-							hello_world
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a
-							href="https://github.com/tauri-apps/tauri/tree/dev/tooling/bench/tests/files_transfer"
-						>
-							3mb_transfer
-						</a>
-					</td>
-					<td>
-						<a href="https://github.com/tauri-apps/wry/tree/dev/bench/tests/src/custom_protocol.rs">
-							custom_protocol
-						</a>
-					</td>
-					<td>
-						<a href="https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/file_transfer">
-							3mb_transfer
-						</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+			<table>
+				<thead>
+					<tr>
+						<th>Tauri</th>
+						<th>Wry</th>
+						<th>Electron</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<a
+								href="https://github.com/tauri-apps/tauri/tree/dev/tooling/bench/tests/cpu_intensive"
+							>
+								cpu_intensive
+							</a>
+						</td>
+						<td>
+							<a href="https://github.com/tauri-apps/wry/tree/dev/bench/tests/src/cpu_intensive.rs">
+								cpu_intensive
+							</a>
+						</td>
+						<td>
+							<a
+								href="https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/cpu_intensive"
+							>
+								cpu_intensive
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="https://github.com/tauri-apps/tauri/tree/dev/tooling/bench/tests/helloworld">
+								hello_world
+							</a>
+						</td>
+						<td>
+							<a href="https://github.com/tauri-apps/wry/tree/dev/bench/tests/src/hello_world.rs">
+								hello_world
+							</a>
+						</td>
+						<td>
+							<a href="https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/hello_world">
+								hello_world
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a
+								href="https://github.com/tauri-apps/tauri/tree/dev/tooling/bench/tests/files_transfer"
+							>
+								3mb_transfer
+							</a>
+						</td>
+						<td>
+							<a
+								href="https://github.com/tauri-apps/wry/tree/dev/bench/tests/src/custom_protocol.rs"
+							>
+								custom_protocol
+							</a>
+						</td>
+						<td>
+							<a
+								href="https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/file_transfer"
+							>
+								3mb_transfer
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 
-		<blockquote>
-			The CPU intensive benchmark measures how much time it takes to calculate all prime numbers
-			under a certain value without blocking the UI.
-		</blockquote>
+			<blockquote>
+				The CPU intensive benchmark measures how much time it takes to calculate all prime numbers
+				under a certain value without blocking the UI.
+			</blockquote>
 
-		<div class="chart">
-			<h2>Execution Time</h2>
-			<div id="exec_time" class="chart-container"></div>
-		</div>
+			<div class="chart">
+				<h2>Execution Time</h2>
+				<div id="exec_time" class="chart-container"></div>
+			</div>
 
-		<div class="chart">
-			<h2>Binary Size</h2>
-			<div id="binary_size" class="chart-container"></div>
-		</div>
+			<div class="chart">
+				<h2>Binary Size</h2>
+				<div id="binary_size" class="chart-container"></div>
+			</div>
 
-		<div class="chart">
-			<h2>Memory Usage</h2>
-			<div id="max_memory" class="chart-container"></div>
-		</div>
+			<div class="chart">
+				<h2>Memory Usage</h2>
+				<div id="max_memory" class="chart-container"></div>
+			</div>
 
-		<div class="chart">
-			<h2>Thread Count</h2>
-			<div id="thread_count" class="chart-container"></div>
-		</div>
+			<div class="chart">
+				<h2>Thread Count</h2>
+				<div id="thread_count" class="chart-container"></div>
+			</div>
 
-		<div class="chart">
-			<h2>Syscall Count</h2>
-			<div id="syscall_count" class="chart-container"></div>
-		</div>
+			<div class="chart">
+				<h2>Syscall Count</h2>
+				<div id="syscall_count" class="chart-container"></div>
+			</div>
 
-		<div class="chart">
-			<h2>Dependencies</h2>
-			<div id="cargo_deps" class="chart-container"></div>
+			<div class="chart">
+				<h2>Dependencies</h2>
+				<div id="cargo_deps" class="chart-container"></div>
+			</div>
 		</div>
 
 		<script type="module">
