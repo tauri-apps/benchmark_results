@@ -24,6 +24,8 @@ All benchmarks run on Github Actions on `ubuntu-latest` matrix. We measure vario
 [electron_hello_world]: https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/hello_world
 [electron_3mb_transfer]: https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/file_transfer
 
+> To view the data in charts: https://tauri-apps.github.io/benchmark_results/
+
 ---
 
 ### Data structure
