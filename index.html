@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="dark light" />
 		<title>Tauri Benchmarks</title>
 
 		<link
@@ -15,6 +16,12 @@
 				max-width: 1200px;
 				margin: 0 auto;
 				padding: 2rem;
+			}
+
+			@media (prefers-color-scheme: dark) {
+				body {
+					background-color: #0d1117;
+				}
 			}
 		</style>
 	</head>
@@ -273,6 +280,8 @@
 				}
 			}
 
+			const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
 			function renderChart(containerId, data) {
 				const chart = new ApexCharts(document.querySelector(`#${containerId}`), {
 					chart: {
@@ -299,6 +308,10 @@
 					},
 
 					series: createSeries(data, containerId),
+
+					theme: {
+						mode: theme,
+					},
 				})
 
 				chart.render()
