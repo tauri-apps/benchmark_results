@@ -1,8 +1,7 @@
 # Benchmarks Results
 
-[![Chat Server](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/SpmNs4S)
-[![devto](https://img.shields.io/badge/blog-dev.to-black.svg)](https://dev.to/tauri)
-[![devto](https://img.shields.io/badge/documentation-tauri.studio-purple.svg)](https://tauri.studio/docs/getting-started/intro)
+[![Chat Server](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.com/invite/tauri)
+[![website](https://img.shields.io/badge/website-tauri.app-purple.svg)](https://tauri.app)
 [![https://good-labs.github.io/greater-good-affirmation/assets/images/badge.svg](https://good-labs.github.io/greater-good-affirmation/assets/images/badge.svg)](https://good-labs.github.io/greater-good-affirmation)
 [![support](https://img.shields.io/badge/sponsor-open%20collective-blue.svg)](https://opencollective.com/tauri)
 
@@ -14,15 +13,17 @@ All benchmarks run on Github Actions on `ubuntu-latest` matrix. We measure vario
 | [tauri_hello_world]   | [wry_hello_world]     | [electron_hello_world]   |
 | [tauri_3mb_transfer]  | [wry_custom_protocol] | [electron_3mb_transfer]  |
 
-[tauri_cpu_intensive]: https://github.com/tauri-apps/tauri/tree/dev/tooling/bench/tests/cpu_intensive
-[tauri_hello_world]: https://github.com/tauri-apps/tauri/tree/dev/tooling/bench/tests/helloworld
-[tauri_3mb_transfer]: https://github.com/tauri-apps/tauri/tree/dev/tooling/bench/tests/files_transfer
+[tauri_cpu_intensive]: https://github.com/tauri-apps/tauri/tree/dev/bench/tests/cpu_intensive
+[tauri_hello_world]: https://github.com/tauri-apps/tauri/tree/dev/bench/tests/helloworld
+[tauri_3mb_transfer]: https://github.com/tauri-apps/tauri/tree/dev/bench/tests/files_transfer
 [wry_cpu_intensive]: https://github.com/tauri-apps/wry/tree/dev/bench/tests/src/cpu_intensive.rs
 [wry_hello_world]: https://github.com/tauri-apps/wry/tree/dev/bench/tests/src/hello_world.rs
 [wry_custom_protocol]: https://github.com/tauri-apps/wry/tree/dev/bench/tests/src/custom_protocol.rs
 [electron_cpu_intensive]: https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/cpu_intensive
 [electron_hello_world]: https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/hello_world
 [electron_3mb_transfer]: https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/file_transfer
+
+> To view the data in charts: https://tauri-apps.github.io/benchmark_results/
 
 ---
 

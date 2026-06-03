@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="dark light" />
+		<title>Tauri Benchmarks</title>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown.min.css"
+		/>
+		<style>
+			body {
+				font-family: system-ui, sans-serif;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 2rem;
+			}
+
+			@media (prefers-color-scheme: dark) {
+				body {
+					background-color: #0d1117;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="markdown-body">
+			<h1>Benchmarks</h1>
+
+			<p>
+				All benchmarks run on GitHub Actions using the
+				<code>ubuntu-latest</code>
+				matrix.
+			</p>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Tauri</th>
+						<th>Wry</th>
+						<th>Electron</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<a href="https://github.com/tauri-apps/tauri/tree/dev/bench/tests/cpu_intensive">
+								cpu_intensive
+							</a>
+						</td>
+						<td>
+							<a href="https://github.com/tauri-apps/wry/tree/dev/bench/tests/src/cpu_intensive.rs">
+								cpu_intensive
+							</a>
+						</td>
+						<td>
+							<a
+								href="https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/cpu_intensive"
+							>
+								cpu_intensive
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="https://github.com/tauri-apps/tauri/tree/dev/bench/tests/helloworld">
+								hello_world
+							</a>
+						</td>
+						<td>
+							<a href="https://github.com/tauri-apps/wry/tree/dev/bench/tests/src/hello_world.rs">
+								hello_world
+							</a>
+						</td>
+						<td>
+							<a href="https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/hello_world">
+								hello_world
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="https://github.com/tauri-apps/tauri/tree/dev/bench/tests/files_transfer">
+								3mb_transfer
+							</a>
+						</td>
+						<td>
+							<a
+								href="https://github.com/tauri-apps/wry/tree/dev/bench/tests/src/custom_protocol.rs"
+							>
+								custom_protocol
+							</a>
+						</td>
+						<td>
+							<a
+								href="https://github.com/tauri-apps/benchmark_electron/tree/dev/apps/file_transfer"
+							>
+								3mb_transfer
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<blockquote>
+				The CPU intensive benchmark measures how much time it takes to calculate all prime numbers
+				under a certain value without blocking the UI.
+			</blockquote>
+
+			<div class="chart">
+				<h2>Execution Time</h2>
+				<p>
+					This shows how much time total it takes intialize the application and wait the
+					<code>DOMContentLoaded</code>
+					event. We use
+					<a href="https://github.com/sharkdp/hyperfine">hyperfine</a>
+					under the hood and run 3 warm-up sequence then, we run 10 sequences to calculate the
+					average execution time.
+				</p>
+				<div id="exec_time" class="chart-container"></div>
+			</div>
+
+			<div class="chart">
+				<h2>Binary Size</h2>
+				<p>All binaries are compiled in release mode.</p>
+				<div id="binary_size" class="chart-container"></div>
+			</div>
+
+			<div class="chart">
+				<h2>Memory Usage</h2>
+				<p>
+					We use
+					<code>time -v</code>
+					to get the max memory usage during execution. Smaller is better.
+				</p>
+				<div id="max_memory" class="chart-container"></div>
+			</div>
+
+			<div class="chart">
+				<h2>Thread Count</h2>
+				<p>How many threads the application use. Smaller is better.</p>
+				<div id="thread_count" class="chart-container"></div>
+			</div>
+
+			<div class="chart">
+				<h2>Syscall Count</h2>
+				<p>
+					How many total syscalls are performed when executing a given application. Smaller is
+					better.
+				</p>
+				<div id="syscall_count" class="chart-container"></div>
+			</div>
+
+			<div class="chart">
+				<h2>Dependencies</h2>
+				<div id="cargo_deps" class="chart-container"></div>
+			</div>
+		</div>
+
+		<script type="module">
+			import ApexCharts from 'https://cdn.jsdelivr.net/npm/apexcharts@5.13.0/+esm'
+
+			const COLORS = {
+				'Tauri Linux': '#184e77',
+				'Tauri Windows': '#38a3a5',
+				'Tauri macOS': '#1a759f',
+
+				'Wry Linux': '#f25c54',
+				'Wry Windows': '#f87a63',
+				'Wry macOS': '#d81159',
+
+				electron_cpu_intensive: '#0EB9DB',
+				electron_hello_world: '#9FEAF9',
+				electron_3mb_transfer: '#032E37',
+
+				wry_custom_protocol: '#B4FF36',
+				wry_hello_world: '#FB898D',
+				wry_cpu_intensive: '#ff8e13',
+
+				tauri_hello_world: '#EA7D8C',
+				tauri_cpu_intensive: '#DE354C',
+				tauri_3mb_transfer: '#8A3595',
+
+				tao_rlib: '#FF1438',
+				wry_rlib: '#D4FF14',
+			}
+
+			async function loadData() {
+				const urls = [
+					['https://tauri-apps.github.io/benchmark_results/tauri-recent.json', 'Tauri'],
+					['https://tauri-apps.github.io/benchmark_results/wry-recent.json', 'Wry'],
+					['https://tauri-apps.github.io/benchmark_results/electron-recent.json', 'Electron'],
+				]
+
+				const datasets = await Promise.all(
+					urls.map(async ([url, type]) => {
+						const data = await fetch(url).then((r) => r.json())
+
+						for (const item of data) {
+							item.typeLabel = type
+						}
+
+						return data
+					}),
+				)
+
+				return transformData(datasets.flat())
+			}
+
+			function transformData(data) {
+				const rows = []
+
+				for (const item of data) {
+					for (const [key, value] of Object.entries(item.exec_time || {})) {
+						rows.push({
+							type: 'exec_time',
+							series: key,
+							order: new Date(item.created_at),
+							value: Number(value.mean.toFixed(3)),
+						})
+					}
+
+					addSeries(item, 'binary_size')
+					addSeries(item, 'max_memory')
+					addSeries(item, 'thread_count')
+					addSeries(item, 'syscall_count')
+
+					if (item.cargo_deps) {
+						for (const [key, value] of Object.entries(item.cargo_deps)) {
+							rows.push({
+								type: 'cargo_deps',
+								series: `${item.typeLabel} ${key}`,
+								order: new Date(item.created_at),
+								value,
+							})
+						}
+					}
+				}
+
+				function addSeries(item, category) {
+					if (!item[category]) return
+
+					for (let [key, value] of Object.entries(item[category])) {
+						if (category === 'binary_size' || category === 'max_memory') {
+							value = Number((value / 1024 / 1024).toFixed(2))
+						}
+
+						rows.push({
+							type: category,
+							series: key,
+							order: new Date(item.created_at),
+							value,
+						})
+					}
+				}
+
+				return rows
+			}
+
+			function createSeries(data, metric) {
+				const filtered = data.filter((x) => x.type === metric)
+
+				const names = [...new Set(filtered.map((x) => x.series))]
+
+				return names.map((name) => ({
+					name,
+					color: COLORS[name] || '#303846',
+					data: filtered
+						.filter((x) => x.series === name)
+						.map((x) => ({
+							x: x.order,
+							y: x.value,
+						})),
+				}))
+			}
+
+			function getYAxisTitle(metric) {
+				switch (metric) {
+					case 'exec_time':
+						return 'seconds'
+					case 'binary_size':
+					case 'max_memory':
+						return 'megabytes'
+					case 'thread_count':
+						return 'threads'
+					case 'syscall_count':
+						return 'syscalls'
+					case 'cargo_deps':
+						return 'dependencies'
+					default:
+						return ''
+				}
+			}
+
+			const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
+			function renderChart(containerId, data) {
+				const chart = new ApexCharts(document.querySelector(`#${containerId}`), {
+					chart: {
+						type: 'line',
+						height: 320,
+						animations: {
+							enabled: false,
+						},
+					},
+
+					stroke: {
+						curve: 'straight',
+						width: 2,
+					},
+
+					xaxis: {
+						type: 'datetime',
+					},
+
+					yaxis: {
+						title: {
+							text: getYAxisTitle(containerId),
+						},
+					},
+
+					series: createSeries(data, containerId),
+
+					theme: {
+						mode: theme,
+					},
+				})
+
+				chart.render()
+			}
+
+			const data = await loadData()
+
+			for (const metric of [
+				'exec_time',
+				'binary_size',
+				'max_memory',
+				'thread_count',
+				'syscall_count',
+				'cargo_deps',
+			]) {
+				renderChart(metric, data)
+			}
+		</script>
+	</body>
+</html>
