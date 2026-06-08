@@ -5,7 +5,7 @@
 [![https://good-labs.github.io/greater-good-affirmation/assets/images/badge.svg](https://good-labs.github.io/greater-good-affirmation/assets/images/badge.svg)](https://good-labs.github.io/greater-good-affirmation)
 [![support](https://img.shields.io/badge/sponsor-open%20collective-blue.svg)](https://opencollective.com/tauri)
 
-All benchmarks run on Github Actions on `ubuntu-latest` matrix. We measure various metrics of the following applications:
+All benchmarks run on Github Actions on `ubuntu-latest`/`windows-latest`/`macos-latest` runners. We measure various metrics of the following applications:
 
 | Tauri                 | Wry                   | Electron                 |
 | :-------------------- | :-------------------- | :----------------------- |
