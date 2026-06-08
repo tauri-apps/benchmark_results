@@ -114,7 +114,7 @@
 				under a certain value without blocking the UI.
 			</blockquote>
 
-			<div class="chart">
+			<div>
 				<h2>Execution Time</h2>
 				<p>
 					This shows how much time total it takes intialize the application and wait the
@@ -132,7 +132,7 @@
 				<div id="exec_time-macos" class="chart-container"></div>
 			</div>
 
-			<div class="chart">
+			<div>
 				<h2>Binary Size</h2>
 				<p>All binaries are compiled in release mode.</p>
 				<h3>Linux</h3>
@@ -143,47 +143,50 @@
 				<div id="binary_size-macos" class="chart-container"></div>
 			</div>
 
-			<div class="chart">
+			<div>
 				<h2>Memory Usage</h2>
 				<p>
 					We use
 					<code>time -v</code>
 					to get the max memory usage during execution. Smaller is better.
 				</p>
+				<blockquote>We currently only measure the Memory Usage on Linux</blockquote>
 				<h3>Linux</h3>
 				<div id="max_memory-linux" class="chart-container"></div>
-				<h3>Windows</h3>
-				<div id="max_memory-windows" class="chart-container"></div>
-				<h3>macOS</h3>
-				<div id="max_memory-macos" class="chart-container"></div>
+				<!-- <h3>Windows</h3> -->
+				<!-- <div id="max_memory-windows" class="chart-container"></div> -->
+				<!-- <h3>macOS</h3> -->
+				<!-- <div id="max_memory-macos" class="chart-container"></div> -->
 			</div>
 
-			<div class="chart">
+			<div>
 				<h2>Thread Count</h2>
 				<p>How many threads the application use. Smaller is better.</p>
+				<blockquote>We currently only measure the Thread Count on Linux</blockquote>
 				<h3>Linux</h3>
 				<div id="thread_count-linux" class="chart-container"></div>
-				<h3>Windows</h3>
-				<div id="thread_count-windows" class="chart-container"></div>
-				<h3>macOS</h3>
-				<div id="thread_count-macos" class="chart-container"></div>
+				<!-- <h3>Windows</h3> -->
+				<!-- <div id="thread_count-windows" class="chart-container"></div> -->
+				<!-- <h3>macOS</h3> -->
+				<!-- <div id="thread_count-macos" class="chart-container"></div> -->
 			</div>
 
-			<div class="chart">
+			<div>
 				<h2>Syscall Count</h2>
 				<p>
 					How many total syscalls are performed when executing a given application. Smaller is
 					better.
 				</p>
+				<blockquote>We currently only measure the Syscall Count on Linux</blockquote>
 				<h3>Linux</h3>
 				<div id="syscall_count-linux" class="chart-container"></div>
-				<h3>Windows</h3>
-				<div id="syscall_count-windows" class="chart-container"></div>
-				<h3>macOS</h3>
-				<div id="syscall_count-macos" class="chart-container"></div>
+				<!-- <h3>Windows</h3> -->
+				<!-- <div id="syscall_count-windows" class="chart-container"></div> -->
+				<!-- <h3>macOS</h3> -->
+				<!-- <div id="syscall_count-macos" class="chart-container"></div> -->
 			</div>
 
-			<div class="chart">
+			<div>
 				<h2>Dependencies</h2>
 				<div id="cargo_deps" class="chart-container"></div>
 			</div>
