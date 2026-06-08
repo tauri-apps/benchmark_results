@@ -223,7 +223,7 @@
 				)
 			}
 
-			function createChartSeries(dataset) {
+			function createChartSeries(datasets) {
 				const series = Object.fromEntries(Object.values(METRICS).map((metric) => [metric, []]))
 				for (const dataset of datasets) {
 					for (const [metric, seriesEntry] of Object.entries(series)) {
@@ -327,8 +327,8 @@
 				chart.render()
 			}
 
-			const dataset = await loadData()
-			const chartSeries = createChartSeries(dataset)
+			const datasets = await loadData()
+			const chartSeries = createChartSeries(datasets)
 
 			for (const metric of METRICS) {
 				renderChart(metric, chartSeries)
