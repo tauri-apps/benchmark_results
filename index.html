@@ -124,13 +124,23 @@
 					under the hood and run 3 warm-up sequence then, we run 10 sequences to calculate the
 					average execution time.
 				</p>
-				<div id="exec_time" class="chart-container"></div>
+				<h3>Linux</h3>
+				<div id="exec_time-linux" class="chart-container"></div>
+				<h3>Windows</h3>
+				<div id="exec_time-windows" class="chart-container"></div>
+				<h3>macOS</h3>
+				<div id="exec_time-macos" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
 				<h2>Binary Size</h2>
 				<p>All binaries are compiled in release mode.</p>
-				<div id="binary_size" class="chart-container"></div>
+				<h3>Linux</h3>
+				<div id="binary_size-linux" class="chart-container"></div>
+				<h3>Windows</h3>
+				<div id="binary_size-windows" class="chart-container"></div>
+				<h3>macOS</h3>
+				<div id="binary_size-macos" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
@@ -140,13 +150,23 @@
 					<code>time -v</code>
 					to get the max memory usage during execution. Smaller is better.
 				</p>
-				<div id="max_memory" class="chart-container"></div>
+				<h3>Linux</h3>
+				<div id="max_memory-linux" class="chart-container"></div>
+				<h3>Windows</h3>
+				<div id="max_memory-windows" class="chart-container"></div>
+				<h3>macOS</h3>
+				<div id="max_memory-macos" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
 				<h2>Thread Count</h2>
 				<p>How many threads the application use. Smaller is better.</p>
-				<div id="thread_count" class="chart-container"></div>
+				<h3>Linux</h3>
+				<div id="thread_count-linux" class="chart-container"></div>
+				<h3>Windows</h3>
+				<div id="thread_count-windows" class="chart-container"></div>
+				<h3>macOS</h3>
+				<div id="thread_count-macos" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
@@ -155,7 +175,12 @@
 					How many total syscalls are performed when executing a given application. Smaller is
 					better.
 				</p>
-				<div id="syscall_count" class="chart-container"></div>
+				<h3>Linux</h3>
+				<div id="syscall_count-linux" class="chart-container"></div>
+				<h3>Windows</h3>
+				<div id="syscall_count-windows" class="chart-container"></div>
+				<h3>macOS</h3>
+				<div id="syscall_count-macos" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
@@ -201,21 +226,35 @@
 				'cargo_deps',
 			]
 
+			const OS = ['linux', 'windows', 'macos']
+
 			async function loadData() {
 				const urls = [
-					['https://tauri-apps.github.io/benchmark_results/tauri-recent.json', 'Tauri'],
-					['https://tauri-apps.github.io/benchmark_results/wry-recent.json', 'Wry'],
-					// ['https://tauri-apps.github.io/benchmark_results/wry-recent.json', 'Wry'],
-					['https://tauri-apps.github.io/benchmark_results/electron-recent.json', 'Electron'],
+					{
+						url: 'https://tauri-apps.github.io/benchmark_results/tauri-recent.json',
+						project: 'Tauri',
+						os: 'linux',
+					},
+					{
+						url: 'https://tauri-apps.github.io/benchmark_results/wry-recent.json',
+						project: 'Wry',
+						os: 'linux',
+					},
+					{
+						url: 'https://tauri-apps.github.io/benchmark_results/electron-recent.json',
+						project: 'Electron',
+						os: 'linux',
+					},
 				]
 
 				return await Promise.all(
-					urls.map(async ([url, type]) => {
+					urls.map(async ({ url, project, os }) => {
 						const response = await fetch(url)
 						const data = await response.json()
 
 						for (const item of data) {
-							item.typeLabel = type
+							item.project = project
+							item.os = os
 						}
 
 						return data
@@ -224,9 +263,16 @@
 			}
 
 			function createChartSeries(datasets) {
-				const series = Object.fromEntries(Object.values(METRICS).map((metric) => [metric, []]))
+				const series = {}
+				for (const metric of METRICS) {
+					for (const os of OS) {
+						const key = metric === 'cargo_deps' ? metric : `${metric}-${os}`
+						series[key] = []
+					}
+				}
+
 				for (const dataset of datasets) {
-					for (const [metric, seriesEntry] of Object.entries(series)) {
+					for (const metric of METRICS) {
 						for (const benchmarkData of dataset) {
 							const data = benchmarkData[metric]
 							if (!data) {
@@ -234,7 +280,9 @@
 							}
 
 							for (const [key, value] of Object.entries(data)) {
-								const entryKey = metric === 'cargo_deps' ? `${benchmarkData.typeLabel} ${key}` : key
+								const seriesEntry =
+									series[metric === 'cargo_deps' ? metric : `${metric}-${benchmarkData.os}`]
+								const entryKey = metric === 'cargo_deps' ? `${benchmarkData.project} ${key}` : key
 								let line = seriesEntry[entryKey]
 								if (!line) {
 									line = []
@@ -288,7 +336,7 @@
 
 			const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 
-			function renderChart(containerId, chartSeries) {
+			function renderChart(containerId, series) {
 				const chart = new ApexCharts(document.querySelector(`#${containerId}`), {
 					chart: {
 						type: 'line',
@@ -313,7 +361,7 @@
 						},
 					},
 
-					series: Object.entries(chartSeries[containerId]).map(([name, values]) => ({
+					series: Object.entries(series).map(([name, values]) => ({
 						name,
 						color: COLORS[name] || '#303846',
 						data: values,
@@ -330,8 +378,8 @@
 			const datasets = await loadData()
 			const chartSeries = createChartSeries(datasets)
 
-			for (const metric of METRICS) {
-				renderChart(metric, chartSeries)
+			for (const [containerId, series] of Object.entries(chartSeries)) {
+				renderChart(containerId, series)
 			}
 		</script>
 	</body>
