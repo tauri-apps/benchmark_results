@@ -31,9 +31,13 @@
 			<h1>Benchmarks</h1>
 
 			<p>
-				All benchmarks run on GitHub Actions using the
+				All benchmarks run on GitHub Actions using
 				<code>ubuntu-latest</code>
-				matrix.
+				/
+				<code>windows-latest</code>
+				/
+				<code>macos-latest</code>
+				runners.
 			</p>
 
 			<table>
@@ -120,13 +124,23 @@
 					under the hood and run 3 warm-up sequence then, we run 10 sequences to calculate the
 					average execution time.
 				</p>
-				<div id="exec_time" class="chart-container"></div>
+				<h3>Linux</h3>
+				<div id="exec_time-linux" class="chart-container"></div>
+				<h3>Windows</h3>
+				<div id="exec_time-windows" class="chart-container"></div>
+				<h3>macOS</h3>
+				<div id="exec_time-macos" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
 				<h2>Binary Size</h2>
 				<p>All binaries are compiled in release mode.</p>
-				<div id="binary_size" class="chart-container"></div>
+				<h3>Linux</h3>
+				<div id="binary_size-linux" class="chart-container"></div>
+				<h3>Windows</h3>
+				<div id="binary_size-windows" class="chart-container"></div>
+				<h3>macOS</h3>
+				<div id="binary_size-macos" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
@@ -136,13 +150,23 @@
 					<code>time -v</code>
 					to get the max memory usage during execution. Smaller is better.
 				</p>
-				<div id="max_memory" class="chart-container"></div>
+				<h3>Linux</h3>
+				<div id="max_memory-linux" class="chart-container"></div>
+				<h3>Windows</h3>
+				<div id="max_memory-windows" class="chart-container"></div>
+				<h3>macOS</h3>
+				<div id="max_memory-macos" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
 				<h2>Thread Count</h2>
 				<p>How many threads the application use. Smaller is better.</p>
-				<div id="thread_count" class="chart-container"></div>
+				<h3>Linux</h3>
+				<div id="thread_count-linux" class="chart-container"></div>
+				<h3>Windows</h3>
+				<div id="thread_count-windows" class="chart-container"></div>
+				<h3>macOS</h3>
+				<div id="thread_count-macos" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
@@ -151,7 +175,12 @@
 					How many total syscalls are performed when executing a given application. Smaller is
 					better.
 				</p>
-				<div id="syscall_count" class="chart-container"></div>
+				<h3>Linux</h3>
+				<div id="syscall_count-linux" class="chart-container"></div>
+				<h3>Windows</h3>
+				<div id="syscall_count-windows" class="chart-container"></div>
+				<h3>macOS</h3>
+				<div id="syscall_count-macos" class="chart-container"></div>
 			</div>
 
 			<div class="chart">
@@ -188,93 +217,103 @@
 				wry_rlib: '#D4FF14',
 			}
 
+			const METRICS = [
+				'exec_time',
+				'binary_size',
+				'max_memory',
+				'thread_count',
+				'syscall_count',
+				'cargo_deps',
+			]
+
+			const OS = ['linux', 'windows', 'macos']
+
 			async function loadData() {
 				const urls = [
-					['https://tauri-apps.github.io/benchmark_results/tauri-recent.json', 'Tauri'],
-					['https://tauri-apps.github.io/benchmark_results/wry-recent.json', 'Wry'],
-					['https://tauri-apps.github.io/benchmark_results/electron-recent.json', 'Electron'],
+					{
+						url: 'https://tauri-apps.github.io/benchmark_results/tauri-recent.json',
+						project: 'Tauri',
+						os: 'linux',
+					},
+					{
+						url: 'https://tauri-apps.github.io/benchmark_results/wry-recent-linux.json',
+						project: 'Wry',
+						os: 'linux',
+					},
+					{
+						url: 'https://tauri-apps.github.io/benchmark_results/electron-recent.json',
+						project: 'Electron',
+						os: 'linux',
+					},
 				]
 
-				const datasets = await Promise.all(
-					urls.map(async ([url, type]) => {
-						const data = await fetch(url).then((r) => r.json())
+				return await Promise.all(
+					urls.map(async ({ url, project, os }) => {
+						const response = await fetch(url)
+						const data = await response.json()
 
 						for (const item of data) {
-							item.typeLabel = type
+							item.project = project
+							item.os = os
 						}
 
 						return data
 					}),
 				)
-
-				return transformData(datasets.flat())
 			}
 
-			function transformData(data) {
-				const rows = []
-
-				for (const item of data) {
-					for (const [key, value] of Object.entries(item.exec_time || {})) {
-						rows.push({
-							type: 'exec_time',
-							series: key,
-							order: new Date(item.created_at),
-							value: Number(value.mean.toFixed(3)),
-						})
+			function createChartSeries(datasets) {
+				const series = {}
+				for (const metric of METRICS) {
+					for (const os of OS) {
+						const key = metric === 'cargo_deps' ? metric : `${metric}-${os}`
+						series[key] = []
 					}
+				}
 
-					addSeries(item, 'binary_size')
-					addSeries(item, 'max_memory')
-					addSeries(item, 'thread_count')
-					addSeries(item, 'syscall_count')
+				for (const dataset of datasets) {
+					for (const metric of METRICS) {
+						for (const benchmarkData of dataset) {
+							const data = benchmarkData[metric]
+							if (!data) {
+								continue
+							}
 
-					if (item.cargo_deps) {
-						for (const [key, value] of Object.entries(item.cargo_deps)) {
-							rows.push({
-								type: 'cargo_deps',
-								series: `${item.typeLabel} ${key}`,
-								order: new Date(item.created_at),
-								value,
-							})
+							for (const [key, value] of Object.entries(data)) {
+								const seriesEntry =
+									series[metric === 'cargo_deps' ? metric : `${metric}-${benchmarkData.os}`]
+								const entryKey = metric === 'cargo_deps' ? `${benchmarkData.project} ${key}` : key
+								let line = seriesEntry[entryKey]
+								if (!line) {
+									line = []
+									seriesEntry[entryKey] = line
+								}
+
+								let y
+
+								switch (metric) {
+									case 'exec_time':
+										y = Number(value.mean.toFixed(3))
+										break
+									case 'binary_size':
+									case 'max_memory':
+										y = Number((value / 1024 / 1024).toFixed(2))
+										break
+									default:
+										y = value
+										break
+								}
+
+								line.push({
+									x: new Date(benchmarkData.created_at),
+									y,
+								})
+							}
 						}
 					}
 				}
 
-				function addSeries(item, category) {
-					if (!item[category]) return
-
-					for (let [key, value] of Object.entries(item[category])) {
-						if (category === 'binary_size' || category === 'max_memory') {
-							value = Number((value / 1024 / 1024).toFixed(2))
-						}
-
-						rows.push({
-							type: category,
-							series: key,
-							order: new Date(item.created_at),
-							value,
-						})
-					}
-				}
-
-				return rows
-			}
-
-			function createSeries(data, metric) {
-				const filtered = data.filter((x) => x.type === metric)
-
-				const names = [...new Set(filtered.map((x) => x.series))]
-
-				return names.map((name) => ({
-					name,
-					color: COLORS[name] || '#303846',
-					data: filtered
-						.filter((x) => x.series === name)
-						.map((x) => ({
-							x: x.order,
-							y: x.value,
-						})),
-				}))
+				return series
 			}
 
 			function getYAxisTitle(metric) {
@@ -297,7 +336,7 @@
 
 			const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 
-			function renderChart(containerId, data) {
+			function renderChart(containerId, series) {
 				const chart = new ApexCharts(document.querySelector(`#${containerId}`), {
 					chart: {
 						type: 'line',
@@ -322,7 +361,11 @@
 						},
 					},
 
-					series: createSeries(data, containerId),
+					series: Object.entries(series).map(([name, values]) => ({
+						name,
+						color: COLORS[name] || '#303846',
+						data: values,
+					})),
 
 					theme: {
 						mode: theme,
@@ -332,17 +375,11 @@
 				chart.render()
 			}
 
-			const data = await loadData()
+			const datasets = await loadData()
+			const chartSeries = createChartSeries(datasets)
 
-			for (const metric of [
-				'exec_time',
-				'binary_size',
-				'max_memory',
-				'thread_count',
-				'syscall_count',
-				'cargo_deps',
-			]) {
-				renderChart(metric, data)
+			for (const [containerId, series] of Object.entries(chartSeries)) {
+				renderChart(containerId, series)
 			}
 		</script>
 	</body>
