@@ -66,6 +66,8 @@ interface BenchmarkData {
 
 This shows how much time total it takes intialize the application and wait the `DOMContentLoaded` event. We use [hyperfine](https://github.com/sharkdp/hyperfine) under the hood and run 3 warm-up sequence then, we run 10 sequences to calculate the average execution time.
 
+> Note: since the runner speeds are quite different on each platform, results from different OS' are not directly comparable.
+
 ### Binary size
 
 We track the size of various files here. All binary are compiled in release mode.
