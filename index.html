@@ -364,7 +364,7 @@
 			const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 
 			function renderChart(containerId, series) {
-				const chart = new ApexCharts(document.querySelector(`#${containerId}`), {
+				const chart = new ApexCharts(document.getElementById(containerId), {
 					chart: {
 						type: 'line',
 						height: 320,
@@ -406,7 +406,9 @@
 			const chartSeries = createChartSeries(datasets)
 
 			for (const [containerId, series] of Object.entries(chartSeries)) {
-				renderChart(containerId, series)
+				if (Object.keys(series).length !== 0) {
+					renderChart(containerId, series)
+				}
 			}
 		</script>
 	</body>
